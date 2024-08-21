@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - NutreVidas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="./styles/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="" style="margin-top: 40px;">Bienvenido a <span style="color: #1E8585 ;">NutreVidas</span></h2>
+        <p class="text-left fw-regular" style="color: grey; margin-bottom: 30px;">Registrate para continuar</p>
+        <form class="needs-validation">
+        <div id="inputsContainer">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="tipoPersona" class="fw-semibold">Tipo de Persona:</label>
+                    <select class="form-select" id="tipoPersona" onchange="showInputs()" required>
+                        <option selected disabled value="">Seleccionar...</option>
+                        <option value="fisica">Persona Física</option>
+                        <option value="juridica">Persona Jurídica</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="usuario"class="fw-semibold" >Usuario</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="Ingrese un usuario" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="contrasenia" class="fw-semibold">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasenia" placeholder="Ingrese Contraseña" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="confirmar-contrasenia" class="fw-semibold">Confirmar Contraseña</label>
+                    <input type="password" class="form-control" id="confirmar-contrasenia" placeholder="Ingrese Contraseña" required>
+                </div>
+            </div>
+            <div id="form-persona-fisica" style="display: none;">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-3">
+                        <label for="nombre-fisica"class="fw-semibold" >Nombre</label>
+                        <input type="text" class="form-control" id="nombre-fisica" placeholder="Ingrese un nombre" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="apellido-fisica" class="fw-semibold">Apellido</label>
+                        <input type="text" class="form-control" id="apellido-fisica" placeholder="Ingrese un apellido" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="mail-fisica" class="fw-semibold">Mail</label>
+                        <input type="email" class="form-control" id="mail-fisica" placeholder="Ingrese un mail" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telefono-fisica" class="fw-semibold">Telefono</label>
+                        <input type="tel" class="form-control" id="telefono-fisica" placeholder="Ingrese un telefono">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-3">
+                        <label for="fecha-fisica" class="fw-semibold">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fecha-fisica">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="doc-fisica" class="fw-semibold">Documento</label>
+                        <input type="number" class="form-control" id="doc-fisica" placeholder="Ingrese un Documento" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="ubi-fisica" class="fw-semibold">Ubicacion</label>
+                        <input type="text" class="form-control" id="ubi-fisica" placeholder="Ingrese una ubicacion">
+                    </div>
+                </div>
+            </div>
+            <div id="form-persona-juridica" style="display: none;">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-3">
+                        <label for="nombre-juridica" class="fw-semibold">Nombre</label>
+                        <input type="text" class="form-control" id="nombre-juridica" placeholder="Ingrese un nombre" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="razonsocial" class="fw-semibold">Razon Social</label>
+                        <input type="number" class="form-control" id="razonsocial" placeholder="Ingrese razon social" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="tipoOrganizacion" class="fw-semibold">Tipo de Organizacion</label>
+                        <select class="form-select" id="tipoOrganizacion" required>
+                            <option selected disabled value="">Seleccionar...</option>
+                            <option value="Gubernamental">Gubernamental</option>
+                            <option value="ONG">ONG</option>
+                            <option value="Empresa">Empresa</option>
+                            <option value="Institución">Institución</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="rubro" class="fw-semibold">Rubro</label>
+                        <select class="form-select" id="rubro" required>
+                            <option selected disabled value="">Seleccionar...</option>
+                            <option value="Deportes">Deportes</option>
+                            <option value="Autopartes">Autopartes</option>
+                            <option value="Computacion">Computacion</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-3">
+                        <label for="mail-juridica" class="fw-semibold">Mail</label>
+                        <input type="email" class="form-control" id="mail-juridica" placeholder="Ingrese un mail">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="tel-juridica" class="fw-semibold">Telefono</label>
+                        <input type="tel" class="form-control" id="tel-juridica" placeholder="Ingrese un telefono">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cuit-juridica" class="fw-semibold">Cuit</label>
+                        <input type="number" class="form-control" id="cuit-juridica" placeholder="Ingrese un cuit">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="ubi-juridica" class="fw-semibold">Ubicacion</label>
+                        <input type="text" class="form-control" id="ubi-juridica" placeholder="Ingrese una ubicacion">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 100px;">
+            <button type="submit" class="btn mt-3 custom-btn fw-semibold" style="width: 300px; font-size: 18px;" >Registrarme</button>
+        </div>
+    </form>
+    </div>
+</body>
+<script src="/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</html>

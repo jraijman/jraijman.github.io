@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaborar - NutreVidas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="./styles/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+             <!-- Botón de menú hamburguesa -->
+            <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav id="sidebarMenu" class="col-md-2  d-md-block bg-teal sidebar collapse">
+                <div class="sidebar-sticky">
+                    <h2 class="sidebar-heading text-white px-3">NutreVidas</h2>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.html">Colaborar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="suscripciones.html">Suscripciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="csvImport.html">Importar CSV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="puntos.html">Puntos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alertas.html">Alertas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="heladeras.html">Heladeras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registroDePersonas.html">Registro Persona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registroDeFallas.html">Registro Falla</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="perfil.html">Perfil</a>
+                        </li>
+                        <li class="nav-item cerrar-sesion">
+                            <a class="nav-link" href="login.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="col-md-9 ml-sm-auto col-lg-10 px-4 main-content">
+                <div class="d-flex justify-content-center align-items-center pt-3">
+                    <h1 class="h2">Elige tu forma de colaborar!</h1>
+                </div>
+                <div class="d-flex justify-content-center align-items-center flex-grow-1 pb-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 d-flex justify-content-center pb-3">
+                            <button class="btn btn-donaciones mb-3"  data-bs-toggle="modal" data-bs-target="#modalDonacionDinero">Donar dinero</button>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center pb-3">
+                            <button class="btn btn-donaciones mb-3"  data-bs-toggle="modal" data-bs-target="#modalDonacionVianda">Donar viandas</button>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center pb-3">
+                            <button class="btn btn-donaciones mb-3" data-bs-toggle="modal" data-bs-target="#modalDistribucionVianda">Distribuir viandas</button>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center pb-3">
+                            <button class="btn btn-donaciones mb-3" data-bs-toggle="modal" data-bs-target="#modalEncargarseDeHeladera">Encargarme de heladera</button>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center pb-3">
+                            <button class="btn btn-donaciones mb-3" data-bs-toggle="modal" data-bs-target="#modalOfrecerCosas">Ofrecer producto / servicio</button>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center pb-3">
+                            <button class="btn btn-donaciones mb-3" data-bs-toggle="modal" data-bs-target="#modalRegistrarPersona">Registrar Persona</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modals -->
+
+<!-- Modal Donacion Dinero -->
+
+<div class="modal fade" id="modalDonacionDinero" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Donar Dinero</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Monto</h5>
+                <input type="text" class="form-control" id="monto" placeholder="Ingrese monto en pesos">
+                <br><br>
+                <h5>Frecuencia</h5>
+                <select class="form-select" id="frecuencia" onchange="showInputs()" required>
+                    <option value="unico">Unico</option>
+                    <option value="semanal">Semanal</option>
+                    <option value="mensual">Mensual</option>
+                </select>
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button type="button" class="btn-donar" id="enviarDonacionDinero">Donar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Donacion Viandas -->
+<div class="modal fade" id="modalDonacionVianda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="donarVianda" >Donar Vianda</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Monto</h5>
+                <input type="text" class="form-control" id="comida" placeholder="Comida">
+                <br>
+                <h5>Caducidad</h5>
+                <input type="date" class="form-control" id="caducidad" placeholder="Fecha Caducidad">
+                <br>
+                <h5>Heladera</h5>
+                <select class="form-select" id="heladera" onchange="showInputs()" required>
+                    <option selected disabled value="">Seleccionar heladera </option>
+                    <option value="heladera">Heladera Juan B Justo y Santa Fe</option>
+                    <option value="heladera">Heladera Acoyte y Rivadavia</option>
+                    <option value="heladera">Heladera Cuenca y Marcos Sastre</option>
+                </select>
+                <br>
+                <h5>Calorias</h5>
+                <input type="text" class="form-control" id="calorias" placeholder="Calorias">
+                <br>
+                <h5>Peso</h5>
+                <input type="text" class="form-control" id="peso" placeholder="Peso">
+                <br>
+                <h5>Cantidad</h5>
+                <input type="number" class="form-control" id="cantidadViandasDonadas" placeholder="Cantidad">
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button type="button" class="btn-donar" id="enviarDonacionVianda">Donar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Distribucion Viandas -->
+<div class="modal fade" id="modalDistribucionVianda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="distribuirViandas">Distribuir Viandas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Heladera Origen</h5>
+                <select class="form-select" id="heladeraOrigen" onchange="showInputs()" required>
+                    <option selected disabled value="">Seleccionar heladera </option>
+                    <option value="heladera">Heladera Juan B Justo y Santa Fe</option>
+                    <option value="heladera">Heladera Acoyte y Rivadavia</option>
+                    <option value="heladera">Heladera Cuenca y Marcos Sastre</option>
+                </select>
+                <br>
+                <h5>Heladera Destino</h5>
+                <select class="form-select" id="heladeraDestino" onchange="showInputs()" required>
+                    <option selected disabled value="">Seleccionar heladera </option>
+                    <option value="heladera">Heladera Juan B Justo y Santa Fe</option>
+                    <option value="heladera">Heladera Acoyte y Rivadavia</option>
+                    <option value="heladera">Heladera Cuenca y Marcos Sastre</option>
+                </select>
+                <br>
+                <h5>Cantidad a distribuir</h5>
+                <input type="number" class="form-control" id="cantidadViandasADistribuir" placeholder="Ingrese cantidad de viandas a distribuir">
+                <br>
+                <h5>Motivo</h5>
+                <input type="text" class="form-control custom-input" id="motivo" placeholder="Ingrese cantidad de viandas a distribuir">
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button type="button" class="btn-donar" id="realizarDistribucion">Distribuir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Encargarse Heladera -->
+<div class="modal fade" id="modalEncargarseDeHeladera" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="encargarseHeladera" >Encargarse de una Heladera</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Heladera</h5>
+                <input type="text" class="form-control" id="nombreNuevaHeladera" placeholder="Heladera">
+                <br>
+
+                <h5>Ubicacion</h5>
+                <input type="text" class="form-control" id="ubicacion" placeholder="Ubicacion">
+                <br>
+
+                <div class="radio-item">
+                    <input type="radio" name="ubicacionExacta" value="">
+                    <label>Quiero que esta sea la ubicacion</label>
+                </div>
+
+                <br>
+
+                <h5>Capacidad de la heladera</h5>
+                <input type="number" class="form-control" id="capacidad" placeholder="Ingrese la cantidad de viandas que puede contener">
+                <br>
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button type="button" class="btn-donar" id="clickEncargarse">Encargarse</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ofrecer producto/servicio -->
+<div class="modal fade" id="modalOfrecerCosas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ofrecerCosas" >Ofrecer Producto/Servicio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Tipo</h5>
+                <select class="form-select" id="tipoOfrecimiento" onchange="showInputs()" required>
+                    <option value="unico">Producto</option>
+                    <option value="semanal">Servicio</option>
+                </select>
+                <br>
+                <h5>Nombre</h5>
+                <input type="text" class="form-control" id="nombreProdServ" placeholder="Nombre del Producto o Servicio">
+                <br>
+                <h5>Descripcion</h5>
+                <input type="text" class="form-control"  id="descricpion" placeholder="Descripcion adicional">
+                <br>
+                <h5>Puntos</h5>
+                <input type="text" class="form-control" id="puntosProd" placeholder="Ingrese la cantidad de puntos que costara">
+
+                <br>
+
+                <h5>Imagenes</h5>
+                <input type="file" class="form-control" id="imageInput" accept="image/*" multiple>
+                <div id="imagePreview" style="margin-top: 10px; display: flex; flex-wrap: wrap;"></div>
+
+
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button type="button" class="btn-donar" id="clickOfrecer">Ofrecer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Registrar Persona -->
+
+<div class="modal fade" id="modalRegistrarPersona" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registrarPersona" >Registrar Persona</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5>Nombre</h5>
+                <input type="text" class="form-control" id="nombrePersona" placeholder="Nombre de la persona">
+                <br>
+
+                <h5>Fecha de Nacimiento</h5>
+                <input type="date" class="form-control" id="fechaNacimiento" placeholder="">
+                <br>
+
+                <h5>Situacion</h5>
+                <div class="radio-item">
+                    <input type="radio" name="situacion" value="calle" id="situacionCalle" onclick="toggleSituacionInput()">
+                    <label for="situacionCalle">Situacion de calle</label>
+
+                    <input type="radio" name="situacion" value="domicilio" id="situacionDomicilio" onclick="toggleSituacionInput()">
+                    <label for="situacionDomicilio">Tiene Domicilio</label>
+                </div>
+                <br>
+                <div id="SituacioninputContainer"></div>
+                <br>
+
+                <h5>Documento</h5>
+                <select class="form-select" id="tipoDocumento" onchange="showDocInputs()" required>
+                    <option value="default">Seleccione un tipo de Documento</option>
+                    <option value="dni">DNI</option>
+                    <option value="libreta">Libreta</option>
+                    <option value="nada">No tiene</option>
+                </select>
+                <br>
+
+                <div id="DocumentoInputContainer"></div>
+                <br>
+
+                <h5>Menores a Cargo</h5>
+                <div class="radio-item">
+                    <input type="radio" name="menores" value="si" id="menoresSi">
+                    <label for="menoresSi">Si</label>
+
+                    <input type="radio" name="menores" value="no" id="menoresNo">
+                    <label for="menoresNo">No</label>
+                </div>
+                <br>
+
+                <div id="inputContainerMenores"></div>
+                <button id="addMoreButton" style="display:none;">Add Another Menor</button>
+                </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-donar" id="clickRegistrarPersona">Registrar Persona</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</html>
