@@ -7,6 +7,7 @@
     <title>Colaborar - NutreVidas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="./styles/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
 <body>
@@ -101,10 +102,17 @@
             <div class="modal-body">
                 <h5>Monto</h5>
                 <input type="text" class="form-control" id="monto" placeholder="Ingrese monto en pesos">
-                <br><br>
+                <br>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-secondary" onclick="setMonto(1000)">$1.000</button>
+                    <button type="button" class="btn btn-secondary" onclick="setMonto(2000)">$2.000</button>
+                    <button type="button" class="btn btn-secondary" onclick="setMonto(5000)">$5.000</button>
+                    <button type="button" class="btn btn-secondary" onclick="setMonto(10000)">$10.000</button>
+                </div>
+                <br>
                 <h5>Frecuencia</h5>
                 <select class="form-select" id="frecuencia" onchange="showInputs()" required>
-                    <option value="unico">Unico</option>
+                    <option value="unico">Único</option>
                     <option value="semanal">Semanal</option>
                     <option value="mensual">Mensual</option>
                 </select>
@@ -113,6 +121,11 @@
             <div class="modal-footer">
                 <button type="button" class="btn-donar" id="enviarDonacionDinero">Donar</button>
             </div>
+            <script>
+                function setMonto(value) {
+                    document.getElementById('monto').value = value;
+                }
+                </script>
         </div>
     </div>
 </div>
@@ -126,22 +139,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h5>Monto</h5>
+                <h5>Comida</h5>
                 <input type="text" class="form-control" id="comida" placeholder="Comida">
                 <br>
                 <h5>Caducidad</h5>
                 <input type="date" class="form-control" id="caducidad" placeholder="Fecha Caducidad">
                 <br>
                 <h5>Heladera</h5>
-                <select class="form-select" id="heladera" onchange="showInputs()" required>
-                    <option selected disabled value="">Seleccionar heladera </option>
-                    <option value="heladera">Heladera Juan B Justo y Santa Fe</option>
-                    <option value="heladera">Heladera Acoyte y Rivadavia</option>
-                    <option value="heladera">Heladera Cuenca y Marcos Sastre</option>
+                <select class="form-control mb-3" id="selectHeladeraVianda">
+                    <option value="" disabled selected>Selecciona una heladera</option>
                 </select>
+                <div id="mapDonacionVianda" class="map-modal" data-select-id="selectHeladeraVianda" style="height: 300px; border-radius: 10px;"></div>
                 <br>
-                <h5>Calorias</h5>
-                <input type="text" class="form-control" id="calorias" placeholder="Calorias">
+                <h5>Calorías</h5>
+                <input type="text" class="form-control" id="calorias" placeholder="Calorías">
                 <br>
                 <h5>Peso</h5>
                 <input type="text" class="form-control" id="peso" placeholder="Peso">
@@ -157,6 +168,7 @@
     </div>
 </div>
 
+
 <!-- Modal Distribucion Viandas -->
 <div class="modal fade" id="modalDistribucionVianda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -167,26 +179,24 @@
             </div>
             <div class="modal-body">
                 <h5>Heladera Origen</h5>
-                <select class="form-select" id="heladeraOrigen" onchange="showInputs()" required>
-                    <option selected disabled value="">Seleccionar heladera </option>
-                    <option value="heladera">Heladera Juan B Justo y Santa Fe</option>
-                    <option value="heladera">Heladera Acoyte y Rivadavia</option>
-                    <option value="heladera">Heladera Cuenca y Marcos Sastre</option>
+                <select class="form-control mb-3" id="selectHeladeraOrigen">
+                    <option value="" disabled selected>Selecciona una heladera</option>
                 </select>
+                <div id="mapDistribucionViandaOrigen" class="map-modal" data-select-id="selectHeladeraOrigen" style="height: 300px; border-radius: 10px;"></div>
+                <br>
                 <br>
                 <h5>Heladera Destino</h5>
-                <select class="form-select" id="heladeraDestino" onchange="showInputs()" required>
-                    <option selected disabled value="">Seleccionar heladera </option>
-                    <option value="heladera">Heladera Juan B Justo y Santa Fe</option>
-                    <option value="heladera">Heladera Acoyte y Rivadavia</option>
-                    <option value="heladera">Heladera Cuenca y Marcos Sastre</option>
+                <select class="form-control mb-3" id="selectHeladeraDestino">
+                    <option value="" disabled selected>Selecciona una heladera</option>
                 </select>
+                <div id="mapDistribucionViandaDestino" class="map-modal" data-select-id="selectHeladeraDestino" style="height: 300px; border-radius: 10px;"></div>
+                <br>
                 <br>
                 <h5>Cantidad a distribuir</h5>
                 <input type="number" class="form-control" id="cantidadViandasADistribuir" placeholder="Ingrese cantidad de viandas a distribuir">
                 <br>
                 <h5>Motivo</h5>
-                <input type="text" class="form-control custom-input" id="motivo" placeholder="Ingrese cantidad de viandas a distribuir">
+                <textarea type="text" class="form-control custom-input" id="motivo" placeholder="Ingrese motivo"></textarea>
             </div>
             <br>
             <div class="modal-footer">
@@ -205,26 +215,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h5>Heladera</h5>
+                <h5>Nombre de heladera</h5>
                 <input type="text" class="form-control" id="nombreNuevaHeladera" placeholder="Heladera">
                 <br>
 
-                <h5>Ubicacion</h5>
-                <input type="text" class="form-control" id="ubicacion" placeholder="Ubicacion">
+                <h5>Ubicación</h5>
+                <p>Seleccione la ubicación en el mapa</p>
+                <input type="text" class="form-control" id="ubicacion" placeholder="Ubicación">
                 <br>
 
-                <div class="radio-item">
-                    <input type="radio" name="ubicacionExacta" value="">
-                    <label>Quiero que esta sea la ubicacion</label>
-                </div>
-
+                <div id="mapUbicacion" style="height: 300px; border-radius: 10px;"></div> <!-- Contenedor del mapa -->
                 <br>
-
+                <button type="button" class="btn btn-secondary" id="recomendarUbicacion" style="width: 100%;">Recomendar Ubicación</button>
+                <br>
+                <br>
                 <h5>Capacidad de la heladera</h5>
                 <input type="number" class="form-control" id="capacidad" placeholder="Ingrese la cantidad de viandas que puede contener">
                 <br>
             </div>
-            <br>
             <div class="modal-footer">
                 <button type="button" class="btn-donar" id="clickEncargarse">Encargarse</button>
             </div>
@@ -250,7 +258,7 @@
                 <h5>Nombre</h5>
                 <input type="text" class="form-control" id="nombreProdServ" placeholder="Nombre del Producto o Servicio">
                 <br>
-                <h5>Descripcion</h5>
+                <h5>Descripción</h5>
                 <input type="text" class="form-control"  id="descricpion" placeholder="Descripcion adicional">
                 <br>
                 <h5>Puntos</h5>
@@ -258,7 +266,7 @@
 
                 <br>
 
-                <h5>Imagenes</h5>
+                <h5>Imágenes</h5>
                 <input type="file" class="form-control" id="imageInput" accept="image/*" multiple>
                 <div id="imagePreview" style="margin-top: 10px; display: flex; flex-wrap: wrap;"></div>
 
@@ -291,10 +299,10 @@
                 <input type="date" class="form-control" id="fechaNacimiento" placeholder="">
                 <br>
 
-                <h5>Situacion</h5>
+                <h5>Situación</h5>
                 <div class="radio-item">
                     <input type="radio" name="situacion" value="calle" id="situacionCalle" onclick="toggleSituacionInput()">
-                    <label for="situacionCalle">Situacion de calle</label>
+                    <label for="situacionCalle">Situación de calle</label>
 
                     <input type="radio" name="situacion" value="domicilio" id="situacionDomicilio" onclick="toggleSituacionInput()">
                     <label for="situacionDomicilio">Tiene Domicilio</label>
@@ -326,7 +334,7 @@
                 <br>
 
                 <div id="inputContainerMenores"></div>
-                <button id="addMoreButton" style="display:none;">Add Another Menor</button>
+                <button class="btn btn-secondary" id="addMoreButton" style="display:none;">Agregar Menor</button>
                 </div>
 
             <div class="modal-footer">
@@ -338,7 +346,13 @@
 
 
 </body>
-<script src="js/script.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="path/to/modal_map.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="./js/modal_map.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/map-encargarse.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>

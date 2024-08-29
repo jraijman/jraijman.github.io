@@ -10,7 +10,7 @@
 }
 
 .submit-button {
-    background-color: #004d40;
+    background-color: #1E8585;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -18,7 +18,7 @@
 }
 
 .submit-button:hover {
-    background-color: #003d33;
+    background-color: #1E8585;
 }
 /* Estilos específicos para esta página */
 .content {
@@ -61,7 +61,7 @@
 }
 
 .input-box button {
-    background-color: #004d40;
+    background-color: #1E8585;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -71,11 +71,11 @@
 }
 
 .input-box button:hover {
-    background-color: #00332b;
+    background-color: #1E8585;
 }
 
 .submit-button {
-    background-color: #004d40;
+    background-color: #1E8585;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -87,5 +87,5 @@
 }
 
 .submit-button:hover {
-    background-color: #00332b;
+    background-color: #1E8585;
 }
