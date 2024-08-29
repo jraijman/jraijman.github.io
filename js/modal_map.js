@@ -74,5 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+     // Inicializar el mapa en el contenedor específico
+     initMap('mapRegistroFalla', 'selectHeladeraRegistroFalla');
 });
 
